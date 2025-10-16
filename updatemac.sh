@@ -6,10 +6,12 @@ sleep 1
 #/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 echo Updating and upgrading Homebrew packages...Enter Administrator password if prompted...
 brew upgrade && brew upgrade --greedy && sleep 1
-echo Checking for macOS system, security, and core App updates...
-sleep 1
+echo Checking for macOS system, security, and App updates...
 # sudo is required for softwareupdate
 tput bel & afplay /System/Library/Sounds/Glass.aiff & echo Please enter Administrator password if prompted:
+mas outdated & sleep 10
+mas upgrade
+sleep 1
 sudo softwareupdate --list --verbose
 # software update phase ends here
 afplay /System/Library/Sounds/Glass.aiff & ECHO Updates complete!
